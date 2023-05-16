@@ -47,6 +47,31 @@ Algunos beneficios adicionales propuestos por Vadluri [5], son la eficiencia en 
 
 ## Instalación
 
+
+
+Vagrant
+
+Como ya fue mencionado vagrant sera el sistema que nos permitira tener las herramientas de mininet a la mano para poder realizar los requerimientos del proyecto, para la instalación descargamos el programa en la pagina de vagrant y lo instalamos. 
+
+Posteriormente necesitamos clonar un repositorio de git que utilizamos para instalar mininet, para este proyecto utilizamos el siguiente git: https://gitlab.cs.washington.edu/561p-course-staff/mininet-environment. Est git especificamente tiene caracteristicas necesarias para el uso de mininet que otros metodos de instalación no tenian como lo son caracteristicas adicionales en el vagrant file. 
+
+Una vez ya tenemos clonado el repositorio de git, creamos una carpeta donde esta clonado el git, en el cmd accedemos a esta carpeta y utilizamos el comando **vagrant up**, con este comando iniciaremos vagrant, el cual implementara todas las funciones de mininet, cuando este termina podremos ver en nuestra maquina virtual, que la instancia de mininet ha sido creada y esta corriendo en segundo plano
+
+![Instalación de vagrant en la virtual machine](images/virtual-box-vagrant.png)
+
+PuTTY
+
+Xming
+
+Para poder visualizar nuestra topologia y tener una acceso a miniedit, que es la interfaz grafica para visualizar todos los procesos realizados en mininiet, utilizamos Xming el cual es una implementación protatil que ofrece un sistema de ventanas para microsoft, para el caso de este proyecto utilizamos PuTTY para realizar una implemantación SSH con la que, al conectar con nuestro PuTTY, podremos tener una vista grafica.
+
+Para utilizar Xming abrimos nuestro installer de PuTTY y entramos a miniedit, posterioremente necesitamos configurar PuTTY para indicarle en ssh que pueda realizar forwardin en X11 para mandar GUI a otro lado, Xming corre por defecto en el :0.0 por lo que tnemos que especificar este en el x11, cuando lo guardamos ya sabe a donde mandar la parte virtual. 
+
+Ya con la interfaz abierta podemos abrir y movernos por las diferentes carpetas con las que viene la insatalación 
+
+![Interfaz grafica de miniedit](images/Xming_interface.png)
+
+
 ## Planteamiento
 
 ## **Bibliografia**
