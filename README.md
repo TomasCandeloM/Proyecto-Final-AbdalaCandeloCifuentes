@@ -43,6 +43,12 @@ Otra ventaja es la adaptabilidad a la naturaleza cambiante de las funciones y ap
 
 Algunos beneficios adicionales propuestos por Vadluri [5], son la eficiencia en la gestión, esta permite manipular las cualidades de la red desde otra ubicación, la programabilidad de la red se maneja de forma más eficiente y centralizada mejorando la funcionalidad del diseño del tráfico y disminuir el bloqueo y ofrece vigilancia delicada en los dispositivos mejorando la protección de un entorno virtualizado[5].
 
+## **Parte 2 red empresarial mininet**
+
+## Instalación
+
+## Planteamiento
+
 ## **Bibliografia**
 
 [1]      	J. Silva, «Tecnología de red definida por software para el aprendizaje en grupos de investigación y educación», Revista Innova Educación, vol. 3, n.o 3, pp. 85-96, jul. 2021, doi: 10.35622/j.rie.2021.03.005.
