@@ -64,6 +64,23 @@ Una vez ya tenemos clonado el repositorio de git, creamos una carpeta donde esta
 
 ## PuTTY
 
+## ssh en visual studio
+Una vez tenemos los componentes presentados anteriormente, para el caso de este grupo decidimos manipular la caracteristicas de mininet a travèz de visual studio ya que es mucho más sencillo de realizar los requerimientos que en la propia consola de la maquina virtual.
+
+Para establecer conexion entre nuestra maquina virtual y el entorno de visual studio por medio de ssh y configurar las propiedades de los archivos, en el powershell de microsoft usamos el comando **vagrant ssh-config**. Este comando nos proporcionara diferente información. 
+
+Desde visual studio sera necesario instalar la extención de remote developer, esta de igual manera instalara automaticamente algunas extenciones adicionales **(ssh, ssh editing)** cuando esta instalado, en la esquina inferior izquierda del visual studio aparecera un boton con simbologia similar a ><, precionamos el boton y nos saldran diferente opciones de conexión. 
+
+![Diferente opciones de conxión con ssh en visual studio](images/tipos-conexion-ssh.png)
+
+En este caso nos queremos conectar a un host, le damos a **configure SSH host** apareceran dos archivos que tienen guardada nuestra configuración SSH,  escogemos la primer opción, en el archivo que nos muestre copiamos la información que obtubimos gracias al comando vagrant ssh-config, toda esta información sera la necesaria para la conexión ssh. Guardamos estos cambios y regresamos a la opción de connect to host y usamos la instancia previamente creada, esto abrira una pestaña la cual nos preguntara que tipo de sistema estamos conectando, para este caso elegimos la opción **Linux** y en la parte inferior podemos observar que ya tenemos la conexión al hosto por medio de ssh.
+
+![Información conexión SSH](images/info-ssh.png)
+
+Finalmente abrimos la carpeta desde la altura más alta para las carpetas de mininet donde esta el acceso a los dos proyectos, como pueba podemos usar el comando ls para ver las diferente carpetas desde la maquina virtual y podemos ver que dichas carpetas tambien son visibles y manipulables en visual. 
+
+![Visualización de las carpetas en visual studio y en la virtual machine](images/verificacion-carpetasSSH.png)
+
 ## Xming
 
 Para poder visualizar nuestra topologia y tener una acceso a miniedit, que es la interfaz grafica para visualizar todos los procesos realizados en mininiet, utilizamos Xming el cual es una implementación protatil que ofrece un sistema de ventanas para microsoft, para el caso de este proyecto utilizamos PuTTY para realizar una implemantación SSH con la que, al conectar con nuestro PuTTY, podremos tener una vista grafica.
