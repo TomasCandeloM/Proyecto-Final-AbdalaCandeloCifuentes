@@ -51,10 +51,8 @@ Debido a los requerimientos para el uso de Mininet, software que solo puede ser 
 
 ![Logo Oracle VM Virtual Box](images/ORACLE_VM_LOGO.jpg)
 
-## puTTY
 
-
-Vagrant
+## Vagrant
 
 Como ya fue mencionado vagrant sera el sistema que nos permitira tener las herramientas de mininet a la mano para poder realizar los requerimientos del proyecto, para la instalación descargamos el programa en la pagina de vagrant y lo instalamos. 
 
@@ -64,9 +62,9 @@ Una vez ya tenemos clonado el repositorio de git, creamos una carpeta donde esta
 
 ![Instalación de vagrant en la virtual machine](images/virtual-box-vagrant.png)
 
-PuTTY
+## PuTTY
 
-Xming
+## Xming
 
 Para poder visualizar nuestra topologia y tener una acceso a miniedit, que es la interfaz grafica para visualizar todos los procesos realizados en mininiet, utilizamos Xming el cual es una implementación protatil que ofrece un sistema de ventanas para microsoft, para el caso de este proyecto utilizamos PuTTY para realizar una implemantación SSH con la que, al conectar con nuestro PuTTY, podremos tener una vista grafica.
 
