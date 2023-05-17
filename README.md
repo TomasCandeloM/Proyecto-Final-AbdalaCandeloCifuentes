@@ -92,7 +92,17 @@ Ya con la interfaz abierta podemos abrir y movernos por las diferentes carpetas 
 ![Interfaz grafica de miniedit](images/Xming_interface.png)
 
 
-## Planteamiento
+## **Planteamiento**
+
+## Topologia
+
+Para ambos aprendizajes de este proyecto (necesario y experto) utilizamos la misma topologia de red empresaria expuesta a continuación, ya que para el proyecto se nos pidio plantear este tipo de redes en el paradigma SDN con las diferentes caracteristica que expondremos más adelante 
+
+![Topologia usada para los proyectos de mininet](images/Topologia-mininet.png)
+
+¿Comó sabemos que esta topologia pertenece a una red empresarial? Pues como podemos observar en las dirección IP que hacen parte de los host podemos darnoas cuenta que hacen parte de subredes diferentes ya que su tercer octeto incrementa con cada host con los que cuenta la topologia, ademas el servidor 1 y el switch dcs31 estan agrupado por aparte, estos dos dispositivos forman lo que es un datacenter dentro las red privada a la cual los demas hos pueden acceder por medio del cores21 y Finalmente el servidor hnottrust hace parte de una red publica, por eso lleva dicho nombre. 
+
+Con estas caracteristicas principales podemos determinar que la topologia efectivamente es de una red empresarial.
 
 ## **Bibliografia**
 
