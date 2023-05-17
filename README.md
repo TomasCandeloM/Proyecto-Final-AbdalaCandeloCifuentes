@@ -236,6 +236,24 @@ Con esto, el controlador está completo y debería ser capaz de manejar todo el 
 
 Cabe la pena mencionar que todo este código contiene múltiples comentarios de explicación para hacer el flujo de información mucho más digerible, y a su vez está lleno de statements de print para poder seguirle la pista a los diferentes mensajes que entran y salen, de igual forma que a los procesos realizados por los diferentes métodos.
 
+## Ejecución de la red
+
+Primero se ejecuta una sesión de PuTTY para la ejecución del pox controller por medio del comando 
+
+```
+sudo ~/pox/pox.py misc.a2part1controller
+```
+
+Una vez nuestro pox controller esta en ejecución necesitamos otra intancia de PuTTY para la ejecución de la topologia.
+
+Para poder ejecutar la red y realizar las verificaciones necesarias para el funcionamiento de esta necesitamos ejecutar el proyecto en cuestion, para esto en nuestra maquina virtual debemos indicar el siguiente comando en cmd de linux
+
+```
+sudo python3 project-2/topos/part1.py
+```
+
+Una vez ejecutamos este comando nuestra maquina virtual pasara del CMD de linux al CLI de mininet por lo que se hace un cambio de nivel y los comando de verificación se realizán desde la vista de mininet.
+
 ## **Verificación de funcionamiento**
  
 ## **Parte 4 - Recomendaciones y Conclusiones**
