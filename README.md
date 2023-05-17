@@ -236,6 +236,24 @@ Con esto, el controlador está completo y debería ser capaz de manejar todo el 
 
 Cabe la pena mencionar que todo este código contiene múltiples comentarios de explicación para hacer el flujo de información mucho más digerible, y a su vez está lleno de statements de print para poder seguirle la pista a los diferentes mensajes que entran y salen, de igual forma que a los procesos realizados por los diferentes métodos.
 
+## Ejecución de la red
+
+Primero se ejecuta una sesión de PuTTY para la ejecución del pox controller por medio del comando 
+
+```
+sudo ~/pox/pox.py misc.a2part1controller
+```
+
+Una vez nuestro pox controller esta en ejecución necesitamos otra intancia de PuTTY para la ejecución de la topologia.
+
+Para poder ejecutar la red y realizar las verificaciones necesarias para el funcionamiento de esta necesitamos ejecutar el proyecto en cuestion, para esto en nuestra maquina virtual debemos indicar el siguiente comando en cmd de linux
+
+```
+sudo python3 project-2/topos/part1.py
+```
+
+Una vez ejecutamos este comando nuestra maquina virtual pasara del CMD de linux al CLI de mininet por lo que se hace un cambio de nivel y los comando de verificación se realizán desde la vista de mininet.
+
 ## **Verificación de funcionamiento**
 
 Para dar por finalizada esta sección, vamos repasar una serie de verificaciones a fin de demostrar que se cumplieron (hasta cierto punto) los requerimientos planteados en cada una de las partes del proyecto.
@@ -274,6 +292,7 @@ Justo como antes, podemos ver que cada switch ha aprendido las reglas necesarias
 Con la realización de este proyecto tanto en el apartado investigativo como en el apartado practico tenemos las siguientes conclusiones:
 
 - Las redes SDN son paradigmas de red que estan en crecimiento, los cuales son configuraciones que permiten un mayor control en el trafico de paquetes, este paradigma trae consigo muchas ventajas como lo puede ser su libertad de configuración y que si se llega a presentar un problema en la topologia podemos arreglar el problema mucho más rapido que con el paradigma norma, sin embargo de igual manera cuenta con algunas desventajas como lo puede ser sus limitaciones y dificultad en la realización de las configuraciones. En resumen, el SDN es un paradigma muy util pero de igual maner requiere un conocimiento significativo para sacar todo el provecho de este
+- Si bien SDN es una buena alternativa para el desarrollo de futuras redes en cualquier ámbito, es importante que la transición se haga de manera moderada evitando que haya algun tipo de colapso que pueda repercutir de manera negativa en los sistemas de redes actuales. Además es importante comenzar a preparar las redes actuales para el cambio debido a la necesidad que se ve en comenzar a implementar alternativas como las que nos ofrece SDN.
 
 
 ## **Bibliografia**
