@@ -1,6 +1,6 @@
 # Proyecto-Final-Abdala Candelo Cifuentes
 
-## **Parte 1: Redes Definidas por Software (SDN)**
+## **Parte 1 - Redes Definidas por Software (SDN)**
 
 Las redes tradicionales se ven altamente caracterizadas por la presencia de dispositivos como lo son routers y switches principalmente, que cuentan con un plano de datos, encargado del reenvío de información, y un plano de control que es donde se implementa el software encargado de el correcto funcionamiento de cada dispositivo. Los avances en comunicaciones que se están presentando están comenzando a desvelar dificultades en las redes tradicionales entre las que destacan la gran inversión de tiempo que se requiere para añadir nuevos dispositivos a una red debido a la complejidad que se requiere para administrarlas, y la poca escalabilidad que se da con las redes tradicionales debido a los avances casi inexistentes que se han dado en el campo en los últimos años [1]. Por ello se proponen las SDN (Redes Definidas por Software).
 Las SDN surgen como un paradigma de red relativamente nuevo [1]. El principal cambio con las redes tradicionales es el desacople que se hace entre el plano de reenvío de datos y el plano de control. En otras palabras, el principal objetivo de esta solución es que se sigan manteniendo los dispositivos de red tradicionales, pero que el software necesario para su funcionamiento sea configurado por medio de un controlador central que usa un protocolo para comunicarse con los controladores de red, este protocolo se llama OpenFlow y permite programar de manera más sencilla y eficiente el funcionamiento de cada uno de los dispositivos pertenecientes a la red, brindando facilidad a la hora de gestionar la misma [2].
@@ -43,7 +43,7 @@ Otra ventaja es la adaptabilidad a la naturaleza cambiante de las funciones y ap
 
 Algunos beneficios adicionales propuestos por Vadluri [5], son la eficiencia en la gestión, esta permite manipular las cualidades de la red desde otra ubicación, la programabilidad de la red se maneja de forma más eficiente y centralizada mejorando la funcionalidad del diseño del tráfico y disminuir el bloqueo y ofrece vigilancia delicada en los dispositivos mejorando la protección de un entorno virtualizado[5].
 
-## **Parte 2 Red Empresarial Mininet**
+## **Parte 2 - Planteamiento de la Red Empresarial Mininet**
 
 ## Instalación
 ## Oracle VM Virtual Box
@@ -142,12 +142,9 @@ El router cores21 debe cumplir funciones similares a las de un router, por lo qu
  
 Al igual que en la parte anterior, todo lo que no aplique entre las normas mencionadas, se debe permitir.
 
-
-
-=======
 ## Topologia
 
-Para ambos aprendizajes de este proyecto (necesario y experto) utilizamos la misma topologia de red empresaria expuesta a continuación, ya que para el proyecto se nos pidio plantear este tipo de redes en el paradigma SDN con las diferentes caracteristica que expondremos más adelante 
+Para ambos aprendizajes de este proyecto (necesario y experto) utilizamos la misma topologia de red empresaria expuesta a continuación, ya que para el proyecto se nos pidio plantear este tipo de redes en el paradigma SDN con las diferentes caracteristica que expondremos más adelante.
 
 ![Topologia usada para los proyectos de mininet](images/Topologia-mininet.png)
 
@@ -155,11 +152,93 @@ Para ambos aprendizajes de este proyecto (necesario y experto) utilizamos la mis
 
 Con estas caracteristicas principales podemos determinar que la topologia efectivamente es de una red empresarial.
 
+## **Parte 3 - Montaje y verificación de la red**
 
+## **Montaje de la topología mediante mininet**
 
-## **Parte 3 verificación de funcionamiento**
+Para empezar con el montaje, partiremos de las topologías presentadas por la universidad de Washington. Rápidamente echaremos un vistazo a estas y explicaremos el montaje que reciben desde python estas redes.
 
-## **Parte 4 recomendaciones y conclusiones**
+**Red Parte 1**
+
+En cuanto a la primera de las redes, como bien se explicó anteriormente la topología es relativamente simple a excepción de unos detalles. Como se puede ver en la imagen a continuación, cada uno de los hosts que se define tiene una ruta predeterminada correspondiente a un link, evidente en el uso del sufijo _eth0_. Haciendo esto, esta primera red se asegura de que la comunicación desde cualquier parte de la red puede salir de su prefijo de red sin necesidad de pasar por un router.
+
+![Montaje en python de la red 1](images/pyhton-part1.png)
+
+Nótese como el switch Cores21 se añade como un simple switch más a pesar de que la topología sugeriría que debería ser un router.
+
+Además de esto, esta primera topología tiene un pequeño script que se ejecuta al crearse la clase topología el cual se encarga de llenar las tablas de enrutamiento de todo host en la red por medio de una serie de ciclos. Esto se puede ver a continuación.
+
+![Script que llena las tablas ARP](images/python-part1-arp.png)
+
+En cuanto al direccionamiento, podemos ver que los hosts siguen un simple patrón debido al cual pertenecen a diferentes subredes como se postuló anteriormente, sin contar a _hnotrust_, quien tiene un IP propia de una red pública. Las redes MAC también se simplifican, al reducirse a una simple cadena de ceros culminada por un digito.
+
+Por último, se añaden los links necesarios entre los diferentes hosts y switches, y con esto la topología está completamente terminada.
+
+**Red Parte 2**
+
+Esta segunda red cuenta con tan solo unos pocos cambios menores respecto a la topología previamente explicada. En concreto, ya no consta con un script que se encargue de llenar las tablas de direccionamiento ARP, y las direcciones predeterminadas se convierten en IPs en vez de puertos. La construcción de la topología en concreto se puede ver a continuación:
+
+![Montaje en python de la red 2](images/python-part2.png)
+
+Así, cada host intentará comunicarse primero con su default gateway antes de poder proseguir con sus paquetes.
+
+## **Montaje de los controladores en POX**
+
+El siguiente paso para cumplir el proyecto postulado por la universidad de Washington es el de la configuración de los diferentes controladores POX para cumplir los requisitos explicados previamente.
+
+**Red Parte 1**
+
+Para empezar, nos encargamos de aplicar a los switches sin ningún requerimiento especial (s1, s2, s3 y dcs31) los Flow_Mods adecuados como para que todo tráfico pueda pasar a través de ellos. En este caso, hay que configurar en los setups de cada uno de estos switches el siguiente comando:
+
+```
+self.connection.send(of.ofp_flow_mod(action=of.ofp_action_output(port = of.OFPP_FLOOD), 
+                                    priority=1))
+```
+
+Todo el resto de configuraciones necesarias ocurren desde el set-up del switch cores21. Los comandos aplicados para cumplir con los requerimientos fueron los siguientes:
+
+```
+self.connection.send(of.ofp_flow_mod(priority=50, match = of.ofp_match(dl_type=0x0800,
+                                                          nw_src=IPS['hnotrust'],
+                                                          nw_dst=IPS['serv1'])))
+
+self.connection.send(of.ofp_flow_mod(priority=40, match = of.ofp_match(dl_type=0x0800,
+                                                          nw_src=IPS['hnotrust'],
+                                                          nw_proto=pkt.ipv4.ICMP_PROTOCOL)))
+
+self.connection.send(of.ofp_flow_mod(action=of.ofp_action_output(port = of.OFPP_FLOOD), 
+                                            priority=1))
+```
+
+A grandes rasgos, el primer comando se encarga de droppear todos los mensajes IPv4 que surjan desde el host _hnotrust_ y se dirijan a _serv1_, cumpliendo el primero de los requisitios, y el segundo de droppear todos los paquetes IPv4 que surjan del _hnotrust_ y sean de tipo ICMP.
+
+Para finalizar, se permite todo el resto de tráfico para que la información pueda viajar libremente de punta a punta de la red.
+
+**Red Parte 2**
+
+El controlador POX de la segunda parte crece bastante en cuanto a complejidad se refiere. Para no sobresaturar la presente documentación, nos limitaremos a mencionar el funcionamiento general y flujo de la información, sin incluír el código como tal del script. Sin embargo, si el lector así lo desea, este archivo se encuentra adjunto en este mismo repositorio, si quiere ver más detenidamente el funcionamiento del controlador.
+
+Para empezar, en cuanto a la restricción de ICMP y tráfico del host _hnotrust_, nos limitamos a copiar y pegar las soluciones que habíamos presentado para la anterior parte.
+
+Una vez hecho esto, definimos un diccionario de Python en el switch _cores21_ desde el cual guardaríamos la dirección MAC y puerto asociado a las diferentes IPs que el switch fuera descubriendo.
+
+Sin permitir ahora todo el tráfico que pase por _cores21_, hacemos uso del método predeterminado al que los eventos entran si no son atendidos por el pox controller para poder diferenciar entre los mensajes ARP y de tráfico IPv4. Esto, por supuesto, debido a los requerimientos presentados en esta parte.
+
+Para empezar, si el mensaje es un mensaje de tipo **ARP**, dirigimos el flujo de la información hacia el método _handle_ARP. Este método se asegura de estar tratando solo con peticiones, y a su vez se encarga de llamar más métodos relacionados, en concreto _update y _reply_arp.
+
+El método de _update es el método encargado de actualizar la tabla con la información de red actualizada a medida que diferentes hosts se comunican con el switch central. Dentro de este método verifica también el tipo de tráfico para asegurar que no haya ningún fallo con el manejo del flujo y las direcciones en OpenFlow.
+
+El método de _reply_arp, por su parte, se encarga de responder las requests de ARP que pasan por el switch _cores21_. Sirviendonos del hecho de que todas las peticiones de ARP se hacen hacia la default gateway, debido a que los hosts se quieren comunicar con otros en diferentes redes y, por tanto, deben preocuparse solo del direccionamiento de capa 3 con respecto a ellos, el método está programado para responder siempre con una dirección MAC fuente creada en base al identificador único creado por OpenFlow para los diferentes switches. Así, todos los computadores pueden llenar sus tablas ARP para sus default gateways que, en realidad, no existen.
+
+El segundo tipo de mensaje que nuestro método predeterminado maneja, son los mensajes de tipo **IPv4**. Al redirigir este tráfico al método _handle_traffic, el procesador verifica si la dirección de destino está ya registrada en la tabla mencionada anteriormente, a la vez con la actualiza con la información de fuente del mensaje. Si el switch conocela dirección de destino, entonces puede encargarse de construir una nueva trama con la dirección MAC apropiada, y reenviarla por el puerto asociado.
+
+Con esto, el controlador está completo y debería ser capaz de manejar todo el tráfico relacionado con los requerimientos de la parte, si bien, como veremos más adelante, el proceso falla en algún punto debido a un error desconocido.
+
+Cabe la pena mencionar que todo este código contiene múltiples comentarios de explicación para hacer el flujo de información mucho más digerible, y a su vez está lleno de statements de print para poder seguirle la pista a los diferentes mensajes que entran y salen, de igual forma que a los procesos realizados por los diferentes métodos.
+
+## **Verificación de funcionamiento**
+ 
+## **Parte 4 - Recomendaciones y Conclusiones**
 
 ## Recomendaciones
 
@@ -192,7 +271,7 @@ Con la realización de este proyecto tanto en el apartado investigativo como en 
 
 [6]    	P. Alcívar and M. Navia, “Comparison between traditional network and software defined network: Case of study ESPAM MFL | Comparativa entre red tradicional y red definida por software: Caso de estudio ESPAM MFL,” RISTI - Revista Iberica de Sistemas e Tecnologias de Informacao, vol. 2020, no. E29, pp. 79–90, 2020.
 
-## documentcación parte 2
+## Documentación parte 2
 
 - https://courses.cs.washington.edu/courses/csep561/22sp/projects/project2/
 - https://gist.github.com/leomindez/3e6d29d341a0fd666e6ae799bfa32ca1
