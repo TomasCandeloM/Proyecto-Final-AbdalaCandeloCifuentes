@@ -123,7 +123,29 @@ Para ambos aprendizajes de este proyecto (necesario y experto) utilizamos la mis
 
 Con estas caracteristicas principales podemos determinar que la topologia efectivamente es de una red empresarial.
 
+
+## **Parte 3 verificación de funcionamiento**
+
+## **Parte 4 recomendaciones y conclusiones**
+
+## Recomendaciones
+
+- Al momento de realizar la instalación de mininet existen variedades de opciones para usar mininet en la virtual box, sin embargo se recomienda la instalación presentada en el documento con Washington ya que este permitira una manipulación y configuración más eficiente por medio de visual studio
+
+- Se recomienda la implementación de ssh con visual studio ya que permite una mayor facilidad y libertad para la configuración e implementación de la red, en especial para el apartado del aprendizaje experto fue una herramienta de mucha ayuda que nos permitio realizar diferentes modificaciones para hacer troubleshooting en nuestro codigo y solucionar muchos problemas 
+
+- El uso de PuTTY consideramos que es un valor agregado ya que permite librarse de varios contras con los que cuenta el cmd de virtual box, cuando esta configurado tiene un axceso directo a xming para poder ver miniedit y simultaneamente tenr el apartado del pox controller, es decir que podemos tener varios PuTTys corriendo al tiempo, ademas de que corre en tu propio host por lo que todas tus caracteristicas pueden seguir siendo usadas y su navegación es mucho más sencilla.
+
+## Conclusiones
+
+Con la realización de este proyecto tanto en el apartado investigativo como en el apartado practico tenemos las siguientes conclusiones:
+
+- Las redes SDN son paradigmas de red que estan en crecimiento, los cuales son configuraciones que permiten un mayor control en el trafico de paquetes, este paradigma trae consigo muchas ventajas como lo puede ser su libertad de configuración y que si se llega a presentar un problema en la topologia podemos arreglar el problema mucho más rapido que con el paradigma norma, sin embargo de igual manera cuenta con algunas desventajas como lo puede ser sus limitaciones y dificultad en la realización de las configuraciones. En resumen, el SDN es un paradigma muy util pero de igual maner requiere un conocimiento significativo para sacar todo el provecho de este
+
+
 ## **Bibliografia**
+
+## Documentación parte 1
 
 [1]      	J. Silva, «Tecnología de red definida por software para el aprendizaje en grupos de investigación y educación», Revista Innova Educación, vol. 3, n.o 3, pp. 85-96, jul. 2021, doi: 10.35622/j.rie.2021.03.005.
 
@@ -136,3 +158,13 @@ Con estas caracteristicas principales podemos determinar que la topologia efecti
 [5]    	M. Benifits and O. F. Sdn, “A COMPREHENSIVE REVIEW ON SDN ARCHITECTURE , APPLICATIONS AND A COMPREHENSIVE REVIEW ON SDN ARCHITECTURE , APPLICATIONS AND MAJOR BENIFITS OF SDN,” no. January, 2019.
 
 [6]    	P. Alcívar and M. Navia, “Comparison between traditional network and software defined network: Case of study ESPAM MFL | Comparativa entre red tradicional y red definida por software: Caso de estudio ESPAM MFL,” RISTI - Revista Iberica de Sistemas e Tecnologias de Informacao, vol. 2020, no. E29, pp. 79–90, 2020.
+
+## documentcación parte 2
+
+- https://courses.cs.washington.edu/courses/csep561/22sp/projects/project2/
+- https://gist.github.com/leomindez/3e6d29d341a0fd666e6ae799bfa32ca1
+- https://courses.cs.washington.edu/courses/csep561/22sp/projects/project2/
+- https://courses.cs.washington.edu/courses/csep561/22sp/projects/project1/
+- https://noxrepo.github.io/pox-doc/html/#forwarding-l3-learning
+- https://gitlab.cs.washington.edu/561p-course-staff/mininet-environment
+- https://www.youtube.com/watch?v=MlACzrm0SCw&t=8s
