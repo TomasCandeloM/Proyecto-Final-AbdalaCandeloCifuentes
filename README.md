@@ -237,6 +237,27 @@ Con esto, el controlador está completo y debería ser capaz de manejar todo el 
 Cabe la pena mencionar que todo este código contiene múltiples comentarios de explicación para hacer el flujo de información mucho más digerible, y a su vez está lleno de statements de print para poder seguirle la pista a los diferentes mensajes que entran y salen, de igual forma que a los procesos realizados por los diferentes métodos.
 
 ## **Verificación de funcionamiento**
+
+Para dar por finalizada esta sección, vamos repasar una serie de verificaciones a fin de demostrar que se cumplieron (hasta cierto punto) los requerimientos planteados en cada una de las partes del proyecto.
+
+**Red Parte 1**
+
+Para simplificar la verificación de funcionamiento, vamos a realizar dos comandos básicos una vez ejecutada la topología.
+
+- **Pingall:**
+
+Este comando, dentro de la CLI de mininet, se encarga de probar las conexiones entre todos los hosts de la red. Al ejecutarlo en nuestra topología, y justo como lo especificaban nuestros requerimientos podemos observarque los pings son exitosos cuando no se realizan desde o hacia el host _hnotrust_. El resultado completo se encuentra a continuación:
+
+![Comando Pingall ejecutado en la topología 1](images/verification-ping-parte1.png)
+
+Esto demuestra que las cláusulas ubicadas en nuestro switch _cores21_ están funcionando justo como lo queríamos, y se está bloqueando el tráfico no deseado mientras que todo el resto se está permitiendo.
+
+- **DPCTL dump-flows:**
+El segundo comando que vamos a usar para la verificación del funcionamiento es el comando DPCTL dump-flows, el cual nos muestra todas las reglas que nuestros switches han aprendido gracias al controlador POX. Los resultados de este comando se pueden ver a continuación: 
+
+![Comando dptcl dump-flows ejecutado en la topología 1](images/verification-dpctl-parte1.png)
+
+Justo como antes, podemos ver que cada switch ha aprendido las reglas necesarias y definidas anteriormente para el cumplimiento de los requerimientos, por lo que el desarrollo de esta parte ha sido completamente exitosa.
  
 ## **Parte 4 - Recomendaciones y Conclusiones**
 
