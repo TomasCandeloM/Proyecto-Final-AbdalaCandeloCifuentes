@@ -111,7 +111,39 @@ Ya con la interfaz abierta podemos abrir y movernos por las diferentes carpetas 
 ![Interfaz grafica de miniedit](images/Xming_interface.png)
 
 
-## Planteamiento
+## **Planteamiento**
+
+## Requerimientos Solicitados
+
+## Proyecto 2 – Parte 1
+
+Después de explicada la topología, en esta sección explicaremos cuales son los requerimientos solicitados para ejecutar en la topología para de esta manera demostrar y comprender el funcionamiento de las herramientas implementadas para el desarrollo del proyecto.
+
+Para esta primera parte se nos solicito hacer uso de la herramienta Pox para configurar los diferentes switches mostrados en la topología. El controlador debe de cumplir con las siguientes especificaciones:
+
+- El hnotrust ubicado en la parte inferior de la imagen de la topología no debe poder hacer uso de tráfico ICMP cuando se quiera comunicar con h10, h20, h30 o serv1
+-	El hnotrust ya antes mencionado no debe poder hacer uso de tráfico IP cuando se quiera comunicar con serv1
+
+Quitando las dos condiciones anteriores, todo el tráfico debe estar permitido.
+
+##  Proyecto 2 – Parte 2
+
+Si bien para esta parte, la topología sigue siendo la misma, en este caso se nos solicita cambiar ciertos dispositivos con el propósito de implementar nuevas configuraciones que faciliten nuevas acciones en la topología.
+El router cores21 debe cumplir funciones similares a las de un router, por lo que es necesario que el Pox tenga varias configuraciones según lo establecido que es lo siguiente:
+
+ - Manejar el tráfico ARP en múltiples subredes como se muestra en la topología sin Forwarding.
+ - Generar respuestas ARP cuando sean requeridas.
+ - Reenviar tráfico IP a través de redes de Capa 2 así como en el interior de ellas.
+ - Aprendizaje dinámico de la topología de Capa 3 de la red mostrada (Que subredes son accesibles en que puertos) haciendo uso del tráfico de snooping ARP.
+ - Permitir que los Host’s se comuniquen bidireccionalmente con el servidor y con los otros Host’s cuando hayan aprendido las direcciones de destino.
+ - Prevenir que hnotrust1 mande tráfico IP a serv1
+ - Prevenir que hnotrust1 mande tráfico ICMP a Host’s regulares o al serv1
+ - Permitir el tráfico bidireccional entre Host’s regulares y hnotrust1
+ 
+Al igual que en la parte anterior, todo lo que no aplique entre las normas mencionadas, se debe permitir.
+
+
+
 
 ## **Bibliografia**
 
