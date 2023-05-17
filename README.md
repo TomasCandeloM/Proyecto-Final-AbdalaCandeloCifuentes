@@ -62,9 +62,28 @@ Una vez ya tenemos clonado el repositorio de git, creamos una carpeta donde esta
 
 ![Instalación de vagrant en la virtual machine](images/virtual-box-vagrant.png)
 
-## PuTTY
+## puTTY
 
-## ssh en visual studio
+Para el desarrollo del laboratorio fue necesario hacer uso de la herramienta puTTY, esto con el propósito de crear una conexión SSH con cada nodo de la topología establecida. Esto funciona para poder acceder a la línea a de comando de cada nodo de manera más fácil y administrarlos como si se estuviera trabajando directamente en cada uno. Con esto se puede monitorizar y hacer pruebas de funcionamiento para el desarrollo del proyecto. 
+La instalación de puTTY es bastante simple. Lo primero será descargarlo desde su sitio web e instalarlo en el dispositivo. Después de haber iniciado sesión como usuario Vagrant, será necesario hacer uso del servicio puTTY Key Generator, esta herramienta será usada para lograr hacer que la private key que nos brinda Vagrant pueda ser leída y entendida por puTTY.
+
+![puTTY Key Generator](images/puTTY-KEY-GENERATOR.png)
+
+Se guardará el archivo de la nueva private key que después tendrá que ser configurada en puTTY. Seguido a esto, ya podremos comenzar a configurar desde puTTY. Ya dentro de la aplicación , Vagrant nos dará unas especificaciones como por ejemplo el puerto, lo que será necesario al momento de configurarlo.
+
+![puTTY Configuration](images/puTTY-CONFIGURATION.png)
+
+Después de esto, será necesario activar el servicio Xming, este no abrirá ninguna ventana, sin embargo, comenzará a correr en segundo plano. En la barra de tareas, este servicio nos brindara un dato que también es necesario para configurar en puTTY.
+
+![puTTY and Xming Connection](images/puTTY-XMING-CONNECTION.png)
+
+Seguido a esto, será necesario brindarle las credenciales de acceso del usuario de Vagrand a puTTY para que este pueda acceder de manera automática cuando sea necesario.
+
+![puTTY Credentials](images/puTTY-CREDENTIALS.png)
+
+Finalmente, se guardarán todas las configuraciones asignadas en un usuario llamado Vagrant (Fue el elegido, no necesariamente tiene que ser esta) que será el que nos brinde la posibilidad de usar todas las opciones de puTTY en la máquina virtual creada por Vagrant.
+
+## SSH en visual studio
 Una vez tenemos los componentes presentados anteriormente, para el caso de este grupo decidimos manipular la caracteristicas de mininet a travèz de visual studio ya que es mucho más sencillo de realizar los requerimientos que en la propia consola de la maquina virtual.
 
 Para establecer conexion entre nuestra maquina virtual y el entorno de visual studio por medio de ssh y configurar las propiedades de los archivos, en el powershell de microsoft usamos el comando **vagrant ssh-config**. Este comando nos proporcionara diferente información. 
