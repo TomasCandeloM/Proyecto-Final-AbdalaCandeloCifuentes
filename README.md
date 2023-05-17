@@ -47,7 +47,7 @@ Algunos beneficios adicionales propuestos por Vadluri [5], son la eficiencia en 
 
 ## Instalación
 ## Oracle VM Virtual Box
-Debido a los requerimientos para el uso de Mininet, software que solo puede ser ejecutado en el sistema operativo Linux, fue necesario hacer uso del servicio Oracle VM Virtual Box ofrecido por la empresa Oracle con el propósito de crear un entorno virtualizado que trabaje bajo el sistema operativo anteriormente mencionado. Para ello es necesario descargar la aplicación desde el sitio oficial de la empresa e instalarla. Si bien es posible crear directamente un entorno de Linux haciendo uso del servicio, se prefirió por facilidades del desarrollo del proyecto crear la máquina virtual por medio de el Software Vagrand que nos brinda directamente las herramientas necesarias para el desarrollo del proyecto sin necesidad de requerir una gran cantidad de instalaciones adicionales ya dentro de la máquina virtual. Si bien más adelante se hablará de la instalación de Vagrand, por el momento es importante tener en cuenta que, si bien la máquina virtual es creada con este software, esta puede ser inicializada desde Oracle VM Virtual Box como si se hubiera creado en la aplicación, facilitando el acceso al entrono virtualizado que se usará para el desarrollo del proyecto.
+Debido a los requerimientos para el uso de Mininet, software que solo puede ser ejecutado en el sistema operativo Linux, fue necesario hacer uso del servicio Oracle VM Virtual Box ofrecido por la empresa Oracle con el propósito de crear un entorno virtualizado que trabaje bajo el sistema operativo anteriormente mencionado. Para ello es necesario descargar la aplicación desde el sitio oficial de la empresa e instalarla. Si bien es posible crear directamente un entorno de Linux haciendo uso del servicio, se prefirió por facilidades del desarrollo del proyecto crear la máquina virtual por medio de el Software Vagrand que nos brinda directamente las herramientas necesarias para el desarrollo del proyecto sin necesidad de requerir una gran cantidad de instalaciones adicionales ya dentro de la máquina virtual. Si bien más adelante se hablará de la instalación de Vagrant, por el momento es importante tener en cuenta que, si bien la máquina virtual es creada con este software, esta puede ser inicializada desde Oracle VM Virtual Box como si se hubiera creado en la aplicación, facilitando el acceso al entrono virtualizado que se usará para el desarrollo del proyecto.
 
 ![Logo Oracle VM Virtual Box](images/ORACLE_VM_LOGO.jpg)
 
@@ -113,7 +113,6 @@ Ya con la interfaz abierta podemos abrir y movernos por las diferentes carpetas 
 
 ## **Planteamiento**
 
-<<<<<<< HEAD
 ## Requerimientos Solicitados
 
 ## Proyecto 2 – Parte 1
@@ -155,9 +154,31 @@ Para ambos aprendizajes de este proyecto (necesario y experto) utilizamos la mis
 ¿Comó sabemos que esta topologia pertenece a una red empresarial? Pues como podemos observar en las dirección IP que hacen parte de los host podemos darnoas cuenta que hacen parte de subredes diferentes ya que su tercer octeto incrementa con cada host con los que cuenta la topologia, ademas el servidor 1 y el switch dcs31 estan agrupado por aparte, estos dos dispositivos forman lo que es un datacenter dentro las red privada a la cual los demas hos pueden acceder por medio del cores21 y Finalmente el servidor hnottrust hace parte de una red publica, por eso lleva dicho nombre. 
 
 Con estas caracteristicas principales podemos determinar que la topologia efectivamente es de una red empresarial.
->>>>>>> 17cb5e54ff3dfd7f4092db743326d46106af1d23
+
+
+
+## **Parte 3 verificación de funcionamiento**
+
+## **Parte 4 recomendaciones y conclusiones**
+
+## Recomendaciones
+
+- Al momento de realizar la instalación de mininet existen variedades de opciones para usar mininet en la virtual box, sin embargo se recomienda la instalación presentada en el documento con Washington ya que este permitira una manipulación y configuración más eficiente por medio de visual studio
+
+- Se recomienda la implementación de ssh con visual studio ya que permite una mayor facilidad y libertad para la configuración e implementación de la red, en especial para el apartado del aprendizaje experto fue una herramienta de mucha ayuda que nos permitio realizar diferentes modificaciones para hacer troubleshooting en nuestro codigo y solucionar muchos problemas 
+
+- El uso de PuTTY consideramos que es un valor agregado ya que permite librarse de varios contras con los que cuenta el cmd de virtual box, cuando esta configurado tiene un axceso directo a xming para poder ver miniedit y simultaneamente tenr el apartado del pox controller, es decir que podemos tener varios PuTTys corriendo al tiempo, ademas de que corre en tu propio host por lo que todas tus caracteristicas pueden seguir siendo usadas y su navegación es mucho más sencilla.
+
+## Conclusiones
+
+Con la realización de este proyecto tanto en el apartado investigativo como en el apartado practico tenemos las siguientes conclusiones:
+
+- Las redes SDN son paradigmas de red que estan en crecimiento, los cuales son configuraciones que permiten un mayor control en el trafico de paquetes, este paradigma trae consigo muchas ventajas como lo puede ser su libertad de configuración y que si se llega a presentar un problema en la topologia podemos arreglar el problema mucho más rapido que con el paradigma norma, sin embargo de igual manera cuenta con algunas desventajas como lo puede ser sus limitaciones y dificultad en la realización de las configuraciones. En resumen, el SDN es un paradigma muy util pero de igual maner requiere un conocimiento significativo para sacar todo el provecho de este
+
 
 ## **Bibliografia**
+
+## Documentación parte 1
 
 [1]      	J. Silva, «Tecnología de red definida por software para el aprendizaje en grupos de investigación y educación», Revista Innova Educación, vol. 3, n.o 3, pp. 85-96, jul. 2021, doi: 10.35622/j.rie.2021.03.005.
 
@@ -170,3 +191,13 @@ Con estas caracteristicas principales podemos determinar que la topologia efecti
 [5]    	M. Benifits and O. F. Sdn, “A COMPREHENSIVE REVIEW ON SDN ARCHITECTURE , APPLICATIONS AND A COMPREHENSIVE REVIEW ON SDN ARCHITECTURE , APPLICATIONS AND MAJOR BENIFITS OF SDN,” no. January, 2019.
 
 [6]    	P. Alcívar and M. Navia, “Comparison between traditional network and software defined network: Case of study ESPAM MFL | Comparativa entre red tradicional y red definida por software: Caso de estudio ESPAM MFL,” RISTI - Revista Iberica de Sistemas e Tecnologias de Informacao, vol. 2020, no. E29, pp. 79–90, 2020.
+
+## documentcación parte 2
+
+- https://courses.cs.washington.edu/courses/csep561/22sp/projects/project2/
+- https://gist.github.com/leomindez/3e6d29d341a0fd666e6ae799bfa32ca1
+- https://courses.cs.washington.edu/courses/csep561/22sp/projects/project2/
+- https://courses.cs.washington.edu/courses/csep561/22sp/projects/project1/
+- https://noxrepo.github.io/pox-doc/html/#forwarding-l3-learning
+- https://gitlab.cs.washington.edu/561p-course-staff/mininet-environment
+- https://www.youtube.com/watch?v=MlACzrm0SCw&t=8s
