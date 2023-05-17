@@ -47,7 +47,7 @@ Algunos beneficios adicionales propuestos por Vadluri [5], son la eficiencia en 
 
 ## Instalación
 ## Oracle VM Virtual Box
-Debido a los requerimientos para el uso de Mininet, software que solo puede ser ejecutado en el sistema operativo Linux, fue necesario hacer uso del servicio Oracle VM Virtual Box ofrecido por la empresa Oracle con el propósito de crear un entorno virtualizado que trabaje bajo el sistema operativo anteriormente mencionado. Para ello es necesario descargar la aplicación desde el sitio oficial de la empresa e instalarla. Si bien es posible crear directamente un entorno de Linux haciendo uso del servicio, se prefirió por facilidades del desarrollo del proyecto crear la máquina virtual por medio de el Software Vagrand que nos brinda directamente las herramientas necesarias para el desarrollo del proyecto sin necesidad de requerir una gran cantidad de instalaciones adicionales ya dentro de la máquina virtual. Si bien más adelante se hablará de la instalación de Vagrand, por el momento es importante tener en cuenta que, si bien la máquina virtual es creada con este software, esta puede ser inicializada desde Oracle VM Virtual Box como si se hubiera creado en la aplicación, facilitando el acceso al entrono virtualizado que se usará para el desarrollo del proyecto.
+Debido a los requerimientos para el uso de Mininet, software que solo puede ser ejecutado en el sistema operativo Linux, fue necesario hacer uso del servicio Oracle VM Virtual Box ofrecido por la empresa Oracle con el propósito de crear un entorno virtualizado que trabaje bajo el sistema operativo anteriormente mencionado. Para ello es necesario descargar la aplicación desde el sitio oficial de la empresa e instalarla. Si bien es posible crear directamente un entorno de Linux haciendo uso del servicio, se prefirió por facilidades del desarrollo del proyecto crear la máquina virtual por medio de el Software Vagrand que nos brinda directamente las herramientas necesarias para el desarrollo del proyecto sin necesidad de requerir una gran cantidad de instalaciones adicionales ya dentro de la máquina virtual. Si bien más adelante se hablará de la instalación de Vagrant, por el momento es importante tener en cuenta que, si bien la máquina virtual es creada con este software, esta puede ser inicializada desde Oracle VM Virtual Box como si se hubiera creado en la aplicación, facilitando el acceso al entrono virtualizado que se usará para el desarrollo del proyecto.
 
 ![Logo Oracle VM Virtual Box](images/ORACLE_VM_LOGO.jpg)
 
@@ -113,6 +113,38 @@ Ya con la interfaz abierta podemos abrir y movernos por las diferentes carpetas 
 
 ## **Planteamiento**
 
+## Requerimientos Solicitados
+
+## Proyecto 2 – Parte 1
+
+Después de explicada la topología, en esta sección explicaremos cuales son los requerimientos solicitados para ejecutar en la topología para de esta manera demostrar y comprender el funcionamiento de las herramientas implementadas para el desarrollo del proyecto.
+
+Para esta primera parte se nos solicito hacer uso de la herramienta Pox para configurar los diferentes switches mostrados en la topología. El controlador debe de cumplir con las siguientes especificaciones:
+
+- El hnotrust ubicado en la parte inferior de la imagen de la topología no debe poder hacer uso de tráfico ICMP cuando se quiera comunicar con h10, h20, h30 o serv1
+-	El hnotrust ya antes mencionado no debe poder hacer uso de tráfico IP cuando se quiera comunicar con serv1
+
+Quitando las dos condiciones anteriores, todo el tráfico debe estar permitido.
+
+##  Proyecto 2 – Parte 2
+
+Si bien para esta parte, la topología sigue siendo la misma, en este caso se nos solicita cambiar ciertos dispositivos con el propósito de implementar nuevas configuraciones que faciliten nuevas acciones en la topología.
+El router cores21 debe cumplir funciones similares a las de un router, por lo que es necesario que el Pox tenga varias configuraciones según lo establecido que es lo siguiente:
+
+ - Manejar el tráfico ARP en múltiples subredes como se muestra en la topología sin Forwarding.
+ - Generar respuestas ARP cuando sean requeridas.
+ - Reenviar tráfico IP a través de redes de Capa 2 así como en el interior de ellas.
+ - Aprendizaje dinámico de la topología de Capa 3 de la red mostrada (Que subredes son accesibles en que puertos) haciendo uso del tráfico de snooping ARP.
+ - Permitir que los Host’s se comuniquen bidireccionalmente con el servidor y con los otros Host’s cuando hayan aprendido las direcciones de destino.
+ - Prevenir que hnotrust1 mande tráfico IP a serv1
+ - Prevenir que hnotrust1 mande tráfico ICMP a Host’s regulares o al serv1
+ - Permitir el tráfico bidireccional entre Host’s regulares y hnotrust1
+ 
+Al igual que en la parte anterior, todo lo que no aplique entre las normas mencionadas, se debe permitir.
+
+
+
+=======
 ## Topologia
 
 Para ambos aprendizajes de este proyecto (necesario y experto) utilizamos la misma topologia de red empresaria expuesta a continuación, ya que para el proyecto se nos pidio plantear este tipo de redes en el paradigma SDN con las diferentes caracteristica que expondremos más adelante 
@@ -122,6 +154,7 @@ Para ambos aprendizajes de este proyecto (necesario y experto) utilizamos la mis
 ¿Comó sabemos que esta topologia pertenece a una red empresarial? Pues como podemos observar en las dirección IP que hacen parte de los host podemos darnoas cuenta que hacen parte de subredes diferentes ya que su tercer octeto incrementa con cada host con los que cuenta la topologia, ademas el servidor 1 y el switch dcs31 estan agrupado por aparte, estos dos dispositivos forman lo que es un datacenter dentro las red privada a la cual los demas hos pueden acceder por medio del cores21 y Finalmente el servidor hnottrust hace parte de una red publica, por eso lleva dicho nombre. 
 
 Con estas caracteristicas principales podemos determinar que la topologia efectivamente es de una red empresarial.
+>>>>>>> 17cb5e54ff3dfd7f4092db743326d46106af1d23
 
 
 ## **Parte 3 verificación de funcionamiento**
