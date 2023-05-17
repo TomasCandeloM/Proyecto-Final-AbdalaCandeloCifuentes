@@ -154,7 +154,7 @@ Para ambos aprendizajes de este proyecto (necesario y experto) utilizamos la mis
 ¿Comó sabemos que esta topologia pertenece a una red empresarial? Pues como podemos observar en las dirección IP que hacen parte de los host podemos darnoas cuenta que hacen parte de subredes diferentes ya que su tercer octeto incrementa con cada host con los que cuenta la topologia, ademas el servidor 1 y el switch dcs31 estan agrupado por aparte, estos dos dispositivos forman lo que es un datacenter dentro las red privada a la cual los demas hos pueden acceder por medio del cores21 y Finalmente el servidor hnottrust hace parte de una red publica, por eso lleva dicho nombre. 
 
 Con estas caracteristicas principales podemos determinar que la topologia efectivamente es de una red empresarial.
->>>>>>> 17cb5e54ff3dfd7f4092db743326d46106af1d23
+
 
 
 ## **Parte 3 verificación de funcionamiento**
