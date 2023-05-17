@@ -253,6 +253,7 @@ Cabe la pena mencionar que todo este código contiene múltiples comentarios de 
 Con la realización de este proyecto tanto en el apartado investigativo como en el apartado practico tenemos las siguientes conclusiones:
 
 - Las redes SDN son paradigmas de red que estan en crecimiento, los cuales son configuraciones que permiten un mayor control en el trafico de paquetes, este paradigma trae consigo muchas ventajas como lo puede ser su libertad de configuración y que si se llega a presentar un problema en la topologia podemos arreglar el problema mucho más rapido que con el paradigma norma, sin embargo de igual manera cuenta con algunas desventajas como lo puede ser sus limitaciones y dificultad en la realización de las configuraciones. En resumen, el SDN es un paradigma muy util pero de igual maner requiere un conocimiento significativo para sacar todo el provecho de este
+- Si bien SDN es una buena alternativa para el desarrollo de futuras redes en cualquier ámbito, es importante que la transición se haga de manera moderada evitando que haya algun tipo de colapso que pueda repercutir de manera negativa en los sistemas de redes actuales. Además es importante comenzar a preparar las redes actuales para el cambio debido a la necesidad que se ve en comenzar a implementar alternativas como las que nos ofrece SDN.
 
 
 ## **Bibliografia**
