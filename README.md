@@ -271,11 +271,52 @@ Este comando, dentro de la CLI de mininet, se encarga de probar las conexiones e
 Esto demuestra que las cláusulas ubicadas en nuestro switch _cores21_ están funcionando justo como lo queríamos, y se está bloqueando el tráfico no deseado mientras que todo el resto se está permitiendo.
 
 - **DPCTL dump-flows:**
+
 El segundo comando que vamos a usar para la verificación del funcionamiento es el comando DPCTL dump-flows, el cual nos muestra todas las reglas que nuestros switches han aprendido gracias al controlador POX. Los resultados de este comando se pueden ver a continuación: 
 
 ![Comando dptcl dump-flows ejecutado en la topología 1](images/verification-dpctl-parte1.png)
 
 Justo como antes, podemos ver que cada switch ha aprendido las reglas necesarias y definidas anteriormente para el cumplimiento de los requerimientos, por lo que el desarrollo de esta parte ha sido completamente exitosa.
+
+**Red Parte 2**
+
+A diferencia que en la primera red, para esta nos serviremos de la serie de prints enviados a fin de demostar el funcionamiento parcial conseguido, puesto que los comandos de verificación tradicionales no pueden demostrarlo.
+
+- **Inspección de statements de print:**
+
+Para empezar, vamos a echar un vistazo a los mensajes generados por el manejo de mensajes ARP. El primero de todos ellos se puede ver a continuación:
+
+![Inspección del primer mensaje ARP](images/arp1.png)
+
+Como se puede ver, por ser la primera vez que el switch es expuesto a esta red, aprende su dirección IP, MAC y puerto asociado y lo demuestra en su tabla actualizada. Además de esto, podemos ver que la respuesta ARP que se genera le devuelve al host una dirección MAC asociada a su default gateway sacada del DPID que OpenFlow utiliza para cada switch.
+
+Aparte de esto, si lo comparamos con un segundo mensaje ARP enviado por el mismo host, veremos que la dirección ya no se está descubriendo, sino que simplemente la tabla se mantiene igual sin ningún cambio notable.
+
+![Inspección del segundo mensaje ARP](images/arp2.png)
+
+Esto funciona igualmente con todos los hosts, a continuación dos ejemplos más:
+
+![Inspección del ejemplos ARP](images/arp3.png)
+
+![Inspección del ejemplos ARP](images/arp4.png)
+
+Por tanto, este primer objetivo de la segunda topología ha sido completado con éxito.
+
+Ahora, en cuanto a tráfico IP, podemos primero fácilmente verificar que, todo el tráfico dirigido a redes que aún no son conocidas por el _cores21_ es inmediatamente descartado. A continuación 2 ejemplos:
+
+![Inspección del ejemplos IP desconocidos](images/ip1.png)
+
+![Inspección del ejemplos IP desconocidos](images/ip2.png)
+
+Ahora bien, para demostrar el correcto funcionamiento de los paquetes que si se conocen, inspeccionemos una instancia en la que el switch conoce al host destino del paquete.
+
+![Inspección del ejemplo IP](images/match1.png)
+
+Para empezar, se puede ver que el paquete está siendo originalmente dirigido a la MAC terminada en 15, es decir, a la MAC asociada a la default gateway, que en este caso es el propio _cores21_. Además, podemos ver que la tabla está completamente llena, por lo que ahora conoce a cada dispositivo en la red. Sin embargo, como se puede ver en las caracterísitcas de la regla (sacada completamente a partir del mensaje en cuestión), el verdadero destino del mensaje es _Host10_. Gracias a que el switch conoce la dirección de este host, entonces se genera no solo una regla con dirección correcta, sino también una acción, en la que se sobreescribe la MAC de destino por la apropiada y se reenvía el mensaje por el puerto asociado.
+
+Sin embargo, y a pesar de todo esto, en última instancia mininet no termina de aceptar nuestro procedimiento, y a causa de un error desconocido estamos forzados a aceptar que, pese a nuestros mayores esfuerzos, los requerimientos de enrutamiento entre capa 2 y capa 3 no ha podido ser cumplidos de forma exitosa.
+
+Así, damos por terminada la sección de verificación, y con ella la experimentación completa que le dimos a diferentes redes y topologías por medio de mininet.
  
 ## **Parte 4 - Recomendaciones y Conclusiones**
 
@@ -293,6 +334,7 @@ Con la realización de este proyecto tanto en el apartado investigativo como en 
 
 - Las redes SDN son paradigmas de red que estan en crecimiento, los cuales son configuraciones que permiten un mayor control en el trafico de paquetes, este paradigma trae consigo muchas ventajas como lo puede ser su libertad de configuración y que si se llega a presentar un problema en la topologia podemos arreglar el problema mucho más rapido que con el paradigma norma, sin embargo de igual manera cuenta con algunas desventajas como lo puede ser sus limitaciones y dificultad en la realización de las configuraciones. En resumen, el SDN es un paradigma muy util pero de igual maner requiere un conocimiento significativo para sacar todo el provecho de este
 - Si bien SDN es una buena alternativa para el desarrollo de futuras redes en cualquier ámbito, es importante que la transición se haga de manera moderada evitando que haya algun tipo de colapso que pueda repercutir de manera negativa en los sistemas de redes actuales. Además es importante comenzar a preparar las redes actuales para el cambio debido a la necesidad que se ve en comenzar a implementar alternativas como las que nos ofrece SDN.
+- Desde un enfoque más práctico, nos gustaría resaltar que, si bien los controladores POX pueden llegar a ser una muy poderosa herramienta en el panorama evolutivo de las SDN, en última instancia su adopción temprana termina siendo bastante hóstil a causa de documentación escasa y poco claro. A pesar de que las posibilidades que ofrece son bastante innovadoras, su curva de aprendizaje termina dificultando en demasía su correcta implementación.
 
 
 ## **Bibliografia**
